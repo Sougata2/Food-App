@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block content %}
+    <style>
+        .payment-form {
+            position: absolute;
+            right: 50rem;
+            bottom: 8rem;
+            z-index: 3000;
+        }
+        .razorpay-payment-button{
+            width: 20rem;
+            height: 4rem;
+            border: 3px solid #ff3838;
+            border-radius: 7px;
+            position: absolute;
+            right: 3rem;
+            font-size: 2rem;
+            background-color: white;
+        }
+        .razorpay-payment-button:hover{
+            background-color: #ff3838;
+            color: #eeeeee;
+        }
+    </style>
+    <body>
+    <!-- order section starts  -->
+    <form action="{{ url_for('foodSection') }}">
+        <button class="btn gt-food-section">Food Section</button>
+    </form>
+    <section class="order" id="order">
+
+        <h1 class="heading"><span>Bill</span></h1>
+
+        <div class="row">
+
+
+            <div class="image">
+                <img src="../static/order-img.jpg" alt="">
+            </div>
+
+            <div class="form">
+                <table class="bill-table">
+                    <tr class="bill-table-header">
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                    <tr>
+                        <td class="bill-table-food-one">{{ session['food_one'] }}</td>
+                        <td class="bill-table-quantity-one">{{ session['quantity_one'] }}</td>
+                        <td class="bill-table-price-one">{{ session['price_one'] }}</td>
+                    </tr>
+                    <tr>
+                        <td class="bill-table-food-two">{{ session['food_two'] }}</td>
+                        <td class="bill-table-quantity-two">{{ session['quantity_two'] }}</td>
+                        <td class="bill-table-price-two">{{ session['price_two'] }}</td>
+                    </tr>
+                    <tr>
+                        <td class="bill-table-food-three">{{ session['food_three'] }}</td>
+                        <td class="bill-table-quantity-three">{{ session['quantity_three'] }}</td>
+                        <td class="bill-table-price-three">{{ session['price_three'] }}</td>
+                    </tr>
+                    <tr class="total-p-row">
+                        <td>Total</td>
+                        <td>Rs.{{ session['total_amount'] }}</td>
+                    </tr>
+                </table>
+
+
+                <!-- Payment -->
+                <form action="{{ url_for('app_charge') }}" method="POST" class="payment-form">
+                    <script
+                            src="https://checkout.razorpay.com/v1/checkout.js"
+                            data-key="rzp_test_WyK93y9mvps7SN"
+                            data-amount="{{ session['payable_amount'] }}"
+                            data-name="Food Order"
+                            data-description="Purchase Description"
+                            data-image="vk.jpg"
+                            data-netbanking="true"
+
+                            data-notes.shopping_order_id="21">
+                    </script>
+                    <input type="hidden"  name="shopping_order_id" value="21">
+                </form>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- order section ends -->
+
+    </body>
+{% endblock %}

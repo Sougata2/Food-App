@@ -1,0 +1,144 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Food Section</title>#}
+{#    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap" rel="stylesheet">#}
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">#}
+{#    <link rel="stylesheet" href="../static/style.css">#}
+{#</head>#}
+{% extends "base.html" %}
+{% block content %}
+<body>
+
+
+<button class="show-cart btn">🛒</button>
+
+
+
+<section class="popular sec" id="popular">
+
+    <h1 class="heading"> most <span>popular</span> foods </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <span class="price price--1">20</span>
+            <img src="../static/p-1.jpg" alt="">
+            <h3 class="food-name--1">tasty burger</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <button class="btn--1 btn">Add To Cart</button>
+        </div>
+        <div class="box">
+            <span class="price price--2">20</span>
+            <img src="../static/p-2.jpg" alt="">
+            <h3 class="food-name--2">tasty cakes</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <button class="btn--2 btn">Add To Cart</button>
+        </div>
+        <div class="box">
+            <span class="price price--3">20</span>
+            <img src="../static/p-3.jpg" alt="">
+            <h3 class="food-name--3">tasty sweets</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <button class="btn--3 btn">Add To Cart</button>
+        </div>
+        <div class="box">
+            <span class="price price--4">20</span>
+            <img src="../static/p-4.jpg" alt="">
+            <h3 class="food-name--4">tasty cupcakes</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <button class="btn--4 btn">Add To Cart</button>
+        </div>
+        <div class="box">
+            <span class="price price--5">20</span>
+            <img src="../static/p-5.jpg" alt="">
+            <h3 class="food-name--5">cold drinks</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <button class="btn--5 btn">Add To Cart</button>
+        </div>
+        <div class="box">
+            <span class="price price--6">20</span>
+            <img src="../static/p-6.jpg" alt="">
+            <h3 class="food-name--6">cold ice-cream</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <button class="btn--6 btn">Add To Cart</button>
+        </div>
+    </div>
+</section>
+
+<section class="window">
+    <div class="cart hidden">
+        <div class="empty-cart">
+            <img src="https://shop.millenniumbooksource.com/static/images/cart1.png" alt="Empty Cart">
+        </div>
+        <div class="display-choice hidden">
+            <table class="choice-table">
+                <tr class='choice-row'>
+                    <th class='choice-col'>Name</th>
+                    <th class='choice-col'>Price</th>
+                    <th class='choice-col'>Quantity</th>
+                    <th class='choice-col'>Add</th>
+                    <th class='choice-col'>Remove</th>
+                </tr>
+            </table>
+        </div>
+        <form method="POST">
+            {{ cart.hidden_tag() }}
+            {{ cart.food_one(class='hidden food--0') }}
+            {{ cart.price_one(class='hidden prc--0') }}
+            {{ cart.quantity_one(class='hidden quantity--0') }}
+
+            {{ cart.food_two(class='hidden food--1') }}
+            {{ cart.price_two(class='hidden prc--1') }}
+            {{ cart.quantity_two(class='hidden quantity--1') }}
+
+            {{ cart.food_three(class='hidden food--2') }}
+            {{ cart.price_three(class='hidden prc--2') }}
+            {{ cart.quantity_three(class='hidden quantity--2') }}
+
+            {{ cart.total(class='hidden total-price') }}
+            {{ cart.submit(class='hidden confirm btn') }}
+        </form>
+    </div>
+</section>
+
+</body>
+<script src="../static/foodSection.js"></script>
+{% endblock %}

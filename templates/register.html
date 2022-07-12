@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <body>
+    <div class="login">
+
+        <form class="login-form" method="post">
+            <h1 class="heading"><span>Register</span></h1>
+            {{ form.hidden_tag() }}
+            <p>{{ form.email.label }} {{ form.email() }}</p>
+            <p>{{ form.username.label }} {{ form.username() }}</p>
+            <p>{{ form.password.label }} {{ form.password() }}</p>
+            <p>{{ form.pass_confirm.label }} {{ form.pass_confirm() }}</p>
+            <p>{{ form.address.label }} {{ form.address() }}</p>
+            <p>{{ form.submit(class='btn') }}</p>
+        </form>
+    </div>
+    </body>
+{% endblock %}

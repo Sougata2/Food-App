@@ -1,0 +1,430 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>complete responsive food website design tutorial </title>#}
+{#    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap" rel="stylesheet">#}
+    {#    <!-- font awesome cdn link  -->#}
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">#}
+{##}
+{#    <!-- custom css file link  -->#}
+{#    <link rel="stylesheet" href="../static/style.css">#}
+{#</head>#}
+{##}
+{#<body>#}
+{##}
+{#<!-- header section starts  -->#}
+{##}
+{#<header>#}
+{##}
+{#    <a href="#" class="logo"><i class="fas fa-utensils"></i>food</a>#}
+{##}
+{#    <div id="menu-bar" class="fas fa-bars"></div>#}
+{##}
+{#    <nav class="navbar">#}
+{#        <a href="{{ url_for('index') }}">home</a>#}
+{#        <a href="{{ url_for('foodSection') }}">Food Section</a>#}
+{##}
+{##}
+{#        {% if current_user.is_authenticated %}#}
+{#        <a>{{ current_user.username | upper() }}</a>#}
+{#        <a href="{{ url_for('logout') }}">Logout</a>#}
+{#        {% else %}#}
+{#        <a href="{{ url_for('login') }}">Login</a>#}
+{#        <a href="{{ url_for('register') }}">Register</a>#}
+{#        {% endif %}#}
+{##}
+{#    </nav>#}
+{##}
+{#</header>#}
+{% extends "base.html" %}
+{% block content %}
+<body>
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home sec" id="home">
+
+    <div class="content">
+        <h3>food made with love</h3>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas accusamus tempore temporibus rem amet
+            laudantium animi optio voluptatum. Natus obcaecati unde porro nostrum ipsam itaque impedit incidunt rem
+            quisquam eos!</p>
+        <a href="#popular" class="btn">Order Now</a>
+    </div>
+
+    <div class="image">
+        <img src="../static/home-img.png" alt="">
+    </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- speciality section starts  -->
+
+<section class="speciality sec" id="speciality">
+
+    <h1 class="heading"> our <span>speciality</span></h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img class="image" src="../static/s-img-1.jpg" alt="">
+            <div class="content">
+                <img src="../static/s-1.png" alt="">
+                <h3>tasty burger</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda inventore neque amet ipsa tenetur
+                    voluptates aperiam tempore libero labore aut.</p>
+            </div>
+        </div>
+        <div class="box">
+            <img class="image" src="../static/s-img-2.jpg" alt="">
+            <div class="content">
+                <img src="../static/s-2.png" alt="">
+                <h3>tasty pizza</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda inventore neque amet ipsa tenetur
+                    voluptates aperiam tempore libero labore aut.</p>
+            </div>
+        </div>
+        <div class="box">
+            <img class="image" src="../static/s-img-3.jpg" alt="">
+            <div class="content">
+                <img src="../static/s-3.png" alt="">
+                <h3>cold ice-cream</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda inventore neque amet ipsa tenetur
+                    voluptates aperiam tempore libero labore aut.</p>
+            </div>
+        </div>
+        <div class="box">
+            <img class="image" src="../static/s-img-4.jpg" alt="">
+            <div class="content">
+                <img src="../static/s-4.png" alt="">
+                <h3>cold drinks</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda inventore neque amet ipsa tenetur
+                    voluptates aperiam tempore libero labore aut.</p>
+            </div>
+        </div>
+        <div class="box">
+            <img class="image" src="../static/s-img-5.jpg" alt="">
+            <div class="content">
+                <img src="../static/s-5.png" alt="">
+                <h3>tasty sweets</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda inventore neque amet ipsa tenetur
+                    voluptates aperiam tempore libero labore aut.</p>
+            </div>
+        </div>
+        <div class="box">
+            <img class="image" src="../static/s-img-6.jpg" alt="">
+            <div class="content">
+                <img src="../static/s-6.png" alt="">
+                <h3>healty breakfast</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda inventore neque amet ipsa tenetur
+                    voluptates aperiam tempore libero labore aut.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- speciality section ends -->
+
+<!-- popular section starts  -->
+
+<section class="popular sec" id="popular">
+
+    <h1 class="heading"> most <span>popular</span> foods </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <span class="price"> $5 - $20 </span>
+            <img src="../static/p-1.jpg" alt="">
+            <h3>tasty burger</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <a href="{{ url_for('foodSection') }}" class="btn">order now</a>
+        </div>
+        <div class="box">
+            <span class="price"> $5 - $20 </span>
+            <img src="../static/p-2.jpg" alt="">
+            <h3>tasty cakes</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <a href="{{ url_for('foodSection') }}" class="btn">order now</a>
+        </div>
+        <div class="box">
+            <span class="price"> $5 - $20 </span>
+            <img src="../static/p-3.jpg" alt="">
+            <h3>tasty sweets</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <a href="{{ url_for('foodSection') }}" class="btn">order now</a>
+        </div>
+        <div class="box">
+            <span class="price"> $5 - $20 </span>
+            <img src="../static/p-4.jpg" alt="">
+            <h3>tasty cupcakes</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <a href="{{ url_for('foodSection') }}" class="btn">order now</a>
+        </div>
+        <div class="box">
+            <span class="price"> $5 - $20 </span>
+            <img src="../static/p-5.jpg" alt="">
+            <h3>cold drinks</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <a href="{{ url_for('foodSection') }}" class="btn">order now</a>
+        </div>
+        <div class="box">
+            <span class="price"> $5 - $20 </span>
+            <img src="../static/p-6.jpg" alt="">
+            <h3>cold ice-cream</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <a href="{{ url_for('foodSection') }}" class="btn">order now</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- popular section ends -->
+
+<!-- steps section starts  -->
+
+<div class="step-container">
+
+    <h1 class="heading">how it <span>works</span></h1>
+
+    <section class="steps">
+
+        <div class="box">
+            <img src="../static/step-1.jpg" alt="">
+            <h3>choose your favorite food</h3>
+        </div>
+        <div class="box">
+            <img src="../static/step-2.jpg" alt="">
+            <h3>free and fast delivery</h3>
+        </div>
+        <div class="box">
+            <img src="../static/step-3.jpg" alt="">
+            <h3>easy payments methods</h3>
+        </div>
+        <div class="box">
+            <img src="../static/step-4.jpg" alt="">
+            <h3>and finally, enjoy your food</h3>
+        </div>
+
+    </section>
+
+</div>
+
+<!-- steps section ends -->
+
+<!-- gallery section starts  -->
+
+<section class="gallery sec" id="gallery">
+
+    <h1 class="heading"> our food <span> gallery </span></h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="../static/g-1.jpg" alt="">
+            <div class="content">
+                <h3>tasty food</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti, ipsum.</p>
+                <a href="{{ url_for('order') }}" class="btn">ordern now</a>
+            </div>
+        </div>
+        <div class="box">
+            <img src="../static/g-2.jpg" alt="">
+            <div class="content">
+                <h3>tasty food</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti, ipsum.</p>
+                <a href="{{ url_for('order') }}" class="btn">ordern now</a>
+            </div>
+        </div>
+        <div class="box">
+            <img src="../static/g-3.jpg" alt="">
+            <div class="content">
+                <h3>tasty food</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti, ipsum.</p>
+                <a href="{{ url_for('order') }}" class="btn">ordern now</a>
+            </div>
+        </div>
+        <div class="box">
+            <img src="../static/g-4.jpg" alt="">
+            <div class="content">
+                <h3>tasty food</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti, ipsum.</p>
+                <a href="{{ url_for('order') }}" class="btn">ordern now</a>
+            </div>
+        </div>
+        <div class="box">
+            <img src="../static/g-5.jpg" alt="">
+            <div class="content">
+                <h3>tasty food</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti, ipsum.</p>
+                <a href="{{ url_for('order') }}" class="btn">ordern now</a>
+            </div>
+        </div>
+        <div class="box">
+            <img src="../static/g-6.jpg" alt="">
+            <div class="content">
+                <h3>tasty food</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti, ipsum.</p>
+                <a href="{{ url_for('order') }}" class="btn">ordern now</a>
+            </div>
+        </div>
+        <div class="box">
+            <img src="../static/g-7.jpg" alt="">
+            <div class="content">
+                <h3>tasty food</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti, ipsum.</p>
+                <a href="{{ url_for('order') }}" class="btn">ordern now</a>
+            </div>
+        </div>
+        <div class="box">
+            <img src="../static/g-8.jpg" alt="">
+            <div class="content">
+                <h3>tasty food</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti, ipsum.</p>
+                <a href="{{ url_for('order') }}" class="btn">ordern now</a>
+            </div>
+        </div>
+        <div class="box">
+            <img src="../static/g-9.jpg" alt="">
+            <div class="content">
+                <h3>tasty food</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti, ipsum.</p>
+                <a href="{{ url_for('order') }}" class="btn">ordern now</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- gallery section ends -->
+
+<!-- review section starts  -->
+
+<section class="review sec" id="review">
+
+    <h1 class="heading"> our customers <span>reviews</span></h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="../static/pic1.png" alt="">
+            <h3>john deo</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti delectus, ducimus facere quod ratione
+                vel laboriosam? Est, maxime rem. Itaque.</p>
+        </div>
+        <div class="box">
+            <img src="../static/pic2.png" alt="">
+            <h3>john deo</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti delectus, ducimus facere quod ratione
+                vel laboriosam? Est, maxime rem. Itaque.</p>
+        </div>
+        <div class="box">
+            <img src="../static/pic3.png" alt="">
+            <h3>john deo</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti delectus, ducimus facere quod ratione
+                vel laboriosam? Est, maxime rem. Itaque.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- review section ends -->
+
+
+<!-- footer section  -->
+<section class="footer">
+
+    <div class="share">
+        <a href="#" class="btn">facebook</a>
+        <a href="#" class="btn">twitter</a>
+        <a href="#" class="btn">instagram</a>
+        <a href="#" class="btn">pinterest</a>
+        <a href="#" class="btn">linkedin</a>
+    </div>
+
+    <h1 class="credit"> Made with <span> Love </span> | all rights reserved! </h1>
+
+</section>
+
+<!-- scroll top button  -->
+<a href="#home" class="fas fa-angle-up" id="scroll-top"></a>
+
+{#<!-- loader  -->#}
+{#<div class="loader-container">#}
+{#    <img src="../static/loader.gif" alt="">#}
+{#</div>#}
+{##}
+{##}
+{#<!-- custom js file link  -->#}
+{#<script src="../static/script.js"></script>#}
+
+
+</body>
+{% endblock %}

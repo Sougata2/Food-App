@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>ORDERS</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+body{
+    margin: 0;
+    padding:0;
+    font-family: 'Ubuntu', sans-serif;
+}
+*{
+    box-sizing: border-box;
+}
+.order-wrapper{
+    background-image:url("https://b.zmtcdn.com/web_assets/81f3ff974d82520780078ba1cfbd453a1583259680.png") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #ffff;
+    font-size: 3rem;
+    text-align: center;
+}
+</style>
+<body>
+    <div class="order-wrapper">
+        <div class="order"><h1>Order Successful😋</h1>
+            <div class="thank">Thank You</div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

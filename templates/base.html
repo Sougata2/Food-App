@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>complete responsive food website design tutorial </title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+    {#    <!-- font awesome cdn link  -->#}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="../static/style.css">
+    <meta charset="UTF-8">
+    <title>Online Food Ordering System</title>
+</head>
+<body>
+<header>
+
+    <a href="#" class="logo"><i class="fas fa-utensils"></i>food</a>
+
+    <div id="menu-bar" class="fas fa-bars"></div>
+
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}">home</a>
+        <a href="{{ url_for('foodSection') }}">Food Section</a>
+
+
+        {% if current_user.is_authenticated %}
+            <a>{{ current_user.username | upper() }}</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('register') }}">Register</a>
+        {% endif %}
+
+    </nav>
+
+</header>
+{% block content %}
+{% endblock %}
+<!-- loader  -->
+<div class="loader-container">
+    <img src="../static/loader.gif" alt="">
+</div>
+<!-- custom js file link  -->
+<script src="../static/script.js"></script>
+</body>
+</html>
