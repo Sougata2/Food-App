@@ -3,7 +3,8 @@ from flask import Flask, render_template, redirect, url_for, session, request
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, StringField, PasswordField, ValidationError
 from wtforms.validators import DataRequired, Email, EqualTo
-from flask_login import login_user, login_required, logout_user, UserMixin, LoginManager
+from flask_login import (login_user, login_required,
+                         logout_user, UserMixin, LoginManager)
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -14,13 +15,15 @@ login_manger = LoginManager()
 app = Flask(__name__)
 app.secret_key = 'secret'
 basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'foodApp.sqlite')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
+                                        os.path.join(basedir, 'foodApp.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 Migrate(app, db)
 login_manger.init_app(app)
 login_manger.login_view = 'login'
-razorpay_client = razorpay.Client(auth=("rzp_test_d6KpX92YrQ9f1r", "yhiBDWq1ioUeikZ5WW3rL1T8"))
+razorpay_client = razorpay.Client(auth=("rzp_test_d6KpX92YrQ9f1r",
+                                        "yhiBDWq1ioUeikZ5WW3rL1T8"))
 
 
 # MODELS
@@ -58,8 +61,11 @@ class RegistrationForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password',
-                             validators=[DataRequired(), EqualTo('pass_confirm', message='Password must match!')])
-    pass_confirm = PasswordField('Confirm Password', validators=[DataRequired()])
+                             validators=[DataRequired(), EqualTo(
+                                'pass_confirm',
+                                message='Password must match!')])
+    pass_confirm = PasswordField('Confirm Password',
+                                 validators=[DataRequired()])
     address = StringField('Address', validators=[DataRequired()])
     submit = SubmitField('Register')
 
