@@ -1,5 +1,4 @@
 import os
-import re
 from flask import Flask, render_template, redirect, url_for, session, request
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, StringField, PasswordField, ValidationError
@@ -49,6 +48,25 @@ class User(db.Model, UserMixin):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+class PlaceOrder(db.Model, UserMixin):
+    __tablename__ = 'orders'
+    order_id = db.Column(db.Integer, primary_key=True)
+    customer_id = db.Column(db.Integer)
+    email = db.Column(db.String(64))
+    address = db.Column(db.String(128))
+    items = db.Column(db.String(256))
+    amount = db.Column(db.Integer)
+
+    def __init__(self, customer_id, email, address, items, amount):
+        self.customer_id = customer_id
+        self.email = email
+        self.address = address
+        self.items = items
+        self.amount = amount
+    
+
+        
 
 
 # FORMS
@@ -178,6 +196,8 @@ def order():
 def app_charge():
     if request.method == 'POST':
         customer_id = request.form.get('customerid')
+        customer = User.query.filter_by(id=customer_id).first()
+
         food_one = request.form.get('food_one')
         quantity_one = request.form.get('quantity_one')
         
@@ -188,7 +208,19 @@ def app_charge():
         quantity_three = request.form.get('quantity_three')
 
         total_amount = request.form.get('total_amount')
+
+        items = ""
+        if food_one:
+            items += food_one+"("+quantity_one+")"
+        if food_two:
+            items += food_two+"("+quantity_two+")"
+        if food_three :
+            items += food_three+"("+quantity_three+")"
+        
         # enter above data to the database table
+        place_order = PlaceOrder(customer_id, customer.email, customer.address, items, total_amount)
+        db.session.add(place_order)
+        db.session.commit()
 
     return redirect(url_for('thanks'))
 
