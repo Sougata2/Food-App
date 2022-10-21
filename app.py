@@ -1,4 +1,5 @@
 import os
+import re
 from flask import Flask, render_template, redirect, url_for, session, request
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, StringField, PasswordField, ValidationError
@@ -175,6 +176,20 @@ def order():
 # PAYMENT GATEWAY
 @app.route('/charge', methods=['POST'])
 def app_charge():
+    if request.method == 'POST':
+        customer_id = request.form.get('customerid')
+        food_one = request.form.get('food_one')
+        quantity_one = request.form.get('quantity_one')
+        
+        food_two = request.form.get('food_two')
+        quantity_two = request.form.get('quantity_two')
+        
+        food_three = request.form.get('food_three')
+        quantity_three = request.form.get('quantity_three')
+
+        total_amount = request.form.get('total_amount')
+        # enter above data to the database table
+
     return redirect(url_for('thanks'))
 
 
