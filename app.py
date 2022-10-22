@@ -38,7 +38,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
-    address = db.Column(db.String(128))
+    address = db.Column(db.Text)
 
     def __init__(self, email, username, password, address):
         self.email = email
@@ -49,13 +49,14 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-class PlaceOrder(db.Model, UserMixin):
-    __tablename__ = 'orders'
+
+class Orders(db.Model, UserMixin):
+    __tablename__ = 'Order'
     order_id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer)
     email = db.Column(db.String(64))
-    address = db.Column(db.String(128))
-    items = db.Column(db.String(256))
+    address = db.Column(db.Text)
+    items = db.Column(db.Text)
     amount = db.Column(db.Integer)
 
     def __init__(self, customer_id, email, address, items, amount):
@@ -209,16 +210,15 @@ def app_charge():
 
         total_amount = request.form.get('total_amount')
 
-        items = ""
-        if food_one:
-            items += food_one+"("+quantity_one+")"
-        if food_two:
-            items += food_two+"("+quantity_two+")"
-        if food_three :
-            items += food_three+"("+quantity_three+")"
+        item_one = food_one+"("+quantity_one+")" if food_one else ""
+        item_two = food_two+"("+quantity_two+")" if food_two else ""
+        item_three = food_three+"("+quantity_three+")" if food_three else ""
+
+        items = item_one + item_two + item_three
+
         
         # enter above data to the database table
-        place_order = PlaceOrder(customer_id, customer.email, customer.address, items, total_amount)
+        place_order = Orders(customer_id, customer.email, customer.address, items, total_amount)
         db.session.add(place_order)
         db.session.commit()
 
