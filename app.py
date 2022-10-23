@@ -65,9 +65,6 @@ class Orders(db.Model, UserMixin):
         self.address = address
         self.items = items
         self.amount = amount
-    
-
-        
 
 
 # FORMS
@@ -82,8 +79,8 @@ class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password',
                              validators=[DataRequired(), EqualTo(
-                                'pass_confirm',
-                                message='Password must match!')])
+                                 'pass_confirm',
+                                 message='Password must match!')])
     pass_confirm = PasswordField('Confirm Password',
                                  validators=[DataRequired()])
     address = StringField('Address', validators=[DataRequired()])
@@ -201,22 +198,21 @@ def app_charge():
 
         food_one = request.form.get('food_one')
         quantity_one = request.form.get('quantity_one')
-        
+
         food_two = request.form.get('food_two')
         quantity_two = request.form.get('quantity_two')
-        
+
         food_three = request.form.get('food_three')
         quantity_three = request.form.get('quantity_three')
 
         total_amount = request.form.get('total_amount')
 
-        item_one = food_one+"("+quantity_one+")" if food_one else ""
-        item_two = food_two+"("+quantity_two+")" if food_two else ""
-        item_three = food_three+"("+quantity_three+")" if food_three else ""
+        item_one = food_one + "(" + quantity_one + ")" if food_one else ""
+        item_two = food_two + "(" + quantity_two + ")" if food_two else ""
+        item_three = food_three + "(" + quantity_three + ")" if food_three else ""
 
         items = item_one + item_two + item_three
 
-        
         # enter above data to the database table
         place_order = Orders(customer_id, customer.email, customer.address, items, total_amount)
         db.session.add(place_order)
